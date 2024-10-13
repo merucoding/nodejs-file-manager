@@ -8,6 +8,7 @@ import { showLs } from "./ls.js";
 import { catFile } from "./cat.js";
 import { createFile } from "./add.js";
 import { renameFileName } from "./rename.js";
+import { copyFile } from "./cp.js";
 
 const homeDir = os.homedir();
 process.chdir(homeDir);
@@ -42,6 +43,10 @@ stdin.on("data", (data) => {
 
   if (input.startsWith("rn ")) {
     renameFileName(input);
+  }
+
+  if (input.startsWith("cp ")) {
+    copyFile(input);
   }
 
   if (input.trim() === "ls") {
