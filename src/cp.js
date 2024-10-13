@@ -2,14 +2,14 @@ import fs from "fs";
 import path from "path";
 import { pipeline } from "stream/promises";
 
-export async function copyFile(input) {
+export async function copyFile(input, move = false) {
   // cp path_to_file path_to_new_directory
   const args = input.slice(3).replace(/[\n\r]/g, "");
   const arr = args.split(" ");
 
   if (arr.length !== 2) {
     console.log(
-      "Invalid input, should be: cp path_to_file path_to_new_directory"
+      "Invalid input, should be: cp/mv path_to_file path_to_new_directory"
     );
   } else {
     const sourcePath = arr[0];
@@ -35,6 +35,10 @@ export async function copyFile(input) {
       } else {
         console.log("Operation failed: the file already exists");
       }
+
+      if (move) {
+        await fs.promises.rm(sourcePath);
+      }
     } catch {
       console.log("Operation failed");
     }
@@ -42,5 +46,8 @@ export async function copyFile(input) {
 }
 
 // cp /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files/toCopy.txt /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files no
-// cp /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files/toCopy.txt /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src no
+// cp /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files/toCopy.txt /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src ok
 // cp /node/nodejs-file-manager/src/files/toCopy.txt /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src no
+
+// mv /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files/toMove.txt /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src ok
+// mv /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files/toMove.txt desktop ok

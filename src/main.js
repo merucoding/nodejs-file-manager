@@ -45,6 +45,10 @@ stdin.on("data", (data) => {
     renameFileName(input);
   }
 
+  if (input.startsWith("mv ")) {
+    copyFile(input, true);
+  }
+
   if (input.startsWith("cp ")) {
     copyFile(input);
   }
