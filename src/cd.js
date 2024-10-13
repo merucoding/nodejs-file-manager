@@ -1,6 +1,8 @@
 import path from "path";
 import fs from "fs/promises";
 
+const rootDir = path.parse(process.cwd()).root;
+
 export async function cdToDir(input) {
   const inputPath = input.slice(3).replace(/[\n\r]/g, ''); // убираем переносы строк
   let finalPath = ''; 

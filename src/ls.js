@@ -15,7 +15,7 @@ export async function showLs() {
       }
     }
   } catch {
-    console.log("Operation failed: ls");
+    console.log("Operation failed: no access");
   }
 
   const combo = diresArr.concat(filesArr);

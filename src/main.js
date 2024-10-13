@@ -5,6 +5,7 @@ import os from "os";
 import { cdToDir } from "./cd.js";
 import { upFromCurrDir } from "./up.js";
 import { showLs } from "./ls.js";
+import { catFile } from "./cat.js";
 
 const homeDir = os.homedir();
 process.chdir(homeDir);
@@ -27,6 +28,10 @@ stdin.on("data", (data) => {
 
   if (input.startsWith("cd ")) {
     cdToDir(input);
+  }
+
+  if (input.startsWith("cat ")) {
+    catFile(input);
   }
 
   if (input.trim() === "ls") {
