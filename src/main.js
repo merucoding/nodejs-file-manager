@@ -9,6 +9,7 @@ import { catFile } from "./cat.js";
 import { createFile } from "./add.js";
 import { renameFileName } from "./rename.js";
 import { copyFile } from "./cp.js";
+import { removeFile } from "./rm.js";
 
 const homeDir = os.homedir();
 process.chdir(homeDir);
@@ -51,6 +52,10 @@ stdin.on("data", (data) => {
 
   if (input.startsWith("cp ")) {
     copyFile(input);
+  }
+
+  if (input.startsWith("rm ")) {
+    removeFile(input);
   }
 
   if (input.trim() === "ls") {
