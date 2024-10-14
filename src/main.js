@@ -12,6 +12,8 @@ import { copyFile } from "./cp.js";
 import { removeFile } from "./rm.js";
 import { osInfo } from "./os.js";
 import { hashCalculate } from "./hash.js";
+import { compress } from "./zip/compress.js";
+import { decompress } from "./zip/decompress.js";
 
 const homeDir = os.homedir();
 process.chdir(homeDir);
@@ -66,6 +68,14 @@ stdin.on("data", (data) => {
 
   if (input.startsWith("hash ")) {
     hashCalculate(input);
+  }
+
+  if (input.startsWith("compress ")) {
+    compress(input);
+  }
+
+  if (input.startsWith("decompress ")) {
+    decompress(input);
   }
 
   if (input.trim() === "ls") {
