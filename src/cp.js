@@ -53,6 +53,7 @@ export async function copyFile(input, move = false) {
 // cp /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files/toCopy.txt /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files no
 // cp /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files/toCopy.txt /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src ok
 // cp /node/nodejs-file-manager/src/files/toCopy.txt /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src no
+// cp /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files/toCopy.txt desktop ok
 
 // mv /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files/toMove.txt /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src ok
 // mv /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/files/toMove.txt desktop ok

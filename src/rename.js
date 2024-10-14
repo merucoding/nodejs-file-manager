@@ -15,12 +15,12 @@ export async function renameFileName(input) {
 
     try {
       await fs.access(pathFile);
+      await fs.rename(pathFile, newFilePath);
+      console.log("Renamed");
+      currDir();
     } catch {
       console.log("Operation failed: file does not exists");
     }
-    await fs.rename(pathFile, newFilePath);
-    console.log("Renamed");
-    currDir();
   }
 }
 

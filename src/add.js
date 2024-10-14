@@ -9,8 +9,11 @@ export async function createFile(input) {
 
   try {
     await fs.writeFile(pathToFile, "", { encoding: "utf8" });
+    console.log("Created");
     currDir();
   } catch {
     console.log("Operation failed");
   }
 }
+
+// add note.txt

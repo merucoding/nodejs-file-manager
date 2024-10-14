@@ -30,11 +30,13 @@ export async function cdToDir(input) {
   }
 }
 
-// /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/etc.js no
-// /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src ok
-// meruert.amantay/Desktop/node/nodejs-file-manager/src/etc.js no
-// nodejs-file-manager/src/etc.js no
-// Desktop/node/nodejs-file-manager/src/ ok
-// Desktop/node/nodejs-file-manager/src/etc.js no
-// /Users/meruert.amantay/Desktop/  v   / ok
-// v no
+// Tests: homedir +
+
+// /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src/etc.js - no, file
+// /Users/meruert.amantay/Desktop/node/nodejs-file-manager/src - ok
+// meruert.amantay/Desktop/node/nodejs-file-manager/src/etc.js - no
+// nodejs-file-manager/src/etc.js - no, wrong path
+// Desktop/node/nodejs-file-manager/src/ - ok
+// Desktop/node/nodejs-file-manager/src/etc.js - no, file
+// /Users/meruert.amantay/Desktop/  v   / - ok
+// v - no
