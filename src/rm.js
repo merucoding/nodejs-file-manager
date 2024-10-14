@@ -8,7 +8,7 @@ export async function removeFile(input) {
   try {
     await fs.access(inputPath);
   } catch {
-   console.log("Operation failed");
+    console.log("Operation failed");
   }
 
   if (stats.isFile()) {

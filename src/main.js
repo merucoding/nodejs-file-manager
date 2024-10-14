@@ -10,6 +10,7 @@ import { createFile } from "./add.js";
 import { renameFileName } from "./rename.js";
 import { copyFile } from "./cp.js";
 import { removeFile } from "./rm.js";
+import { osInfo } from "./os.js";
 
 const homeDir = os.homedir();
 process.chdir(homeDir);
@@ -56,6 +57,10 @@ stdin.on("data", (data) => {
 
   if (input.startsWith("rm ")) {
     removeFile(input);
+  }
+
+  if (input.startsWith("os ")) {
+    osInfo(input);
   }
 
   if (input.trim() === "ls") {
