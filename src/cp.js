@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { pipeline } from "stream/promises";
+import { currDir } from "./currDir.js";
 
 export async function copyFile(input, move = false) {
   // cp path_to_file path_to_new_directory
@@ -32,12 +33,16 @@ export async function copyFile(input, move = false) {
 
       if (!access) {
         await pipeline(rs, ws);
+        console.log("Copied");
+        currDir();
       } else {
         console.log("Operation failed: the file already exists");
       }
 
       if (move) {
         await fs.promises.rm(sourcePath);
+        console.log("Moved");
+        currDir();
       }
     } catch {
       console.log("Operation failed");

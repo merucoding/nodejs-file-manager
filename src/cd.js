@@ -1,11 +1,12 @@
 import path from "path";
 import fs from "fs/promises";
+import { currDir } from "./currDir.js";
 
 const rootDir = path.parse(process.cwd()).root;
 
 export async function cdToDir(input) {
-  const inputPath = input.slice(3).replace(/[\n\r]/g, ''); // убираем переносы строк
-  let finalPath = ''; 
+  const inputPath = input.slice(3).replace(/[\n\r]/g, ""); // убираем переносы строк
+  let finalPath = "";
 
   if (path.isAbsolute(inputPath) && inputPath.startsWith(rootDir)) {
     finalPath = inputPath;
@@ -20,12 +21,12 @@ export async function cdToDir(input) {
     if (stats.isDirectory()) {
       // console.log('ok', finalPath);
       process.chdir(inputPath);
-      console.log(`\nYou are currently in ${process.cwd()}`);
+      currDir();
     } else {
-      console.log('Invalid input: not a folder', finalPath);
+      console.log("Invalid input: not a folder", finalPath);
     }
   } catch {
-    console.log('Invalid input: no access', finalPath);
+    console.log("Invalid input: no access", finalPath);
   }
 }
 

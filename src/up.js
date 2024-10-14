@@ -1,4 +1,5 @@
 import path from "path";
+import { currDir } from "./currDir.js";
 
 const rootDir = path.parse(process.cwd()).root;
 
@@ -8,9 +9,9 @@ export function upFromCurrDir() {
   console.log(newPath);
 
   if (currPath === rootDir) {
-    console.log(`\nYou are currently in ${process.cwd()}ok`);
+    currDir();
   } else {
     process.chdir(newPath);
-    console.log(`\nYou are currently in ${process.cwd()}`);
+    currDir();
   }
 }

@@ -1,6 +1,7 @@
 import fs from "fs";
 import zlib from "zlib";
 import { pipeline } from "stream/promises";
+import { currDir } from "../currDir.js";
 
 export async function decompress(input) {
   // decompress path_to_file path_to_destination
@@ -22,6 +23,7 @@ export async function decompress(input) {
 
       const brotli = zlib.createBrotliDecompress();
       await pipeline(rs, brotli, ws);
+      currDir();
     } catch {
       console.log("Operation failed");
     }

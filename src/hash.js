@@ -1,6 +1,7 @@
 import fs from "fs";
 import crypto from "crypto";
 import { pipeline } from "stream/promises";
+import { currDir } from "./currDir.js";
 
 export async function hashCalculate(input) {
   // hash path_to_file
@@ -15,6 +16,7 @@ export async function hashCalculate(input) {
       const rs = fs.createReadStream(inputPath);
       await pipeline(rs, hash.setEncoding("hex"));
       console.log(hash.read());
+      currDir();
     } else {
       console.log("Invalid input: path is not a file");
     }

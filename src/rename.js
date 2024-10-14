@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import { currDir } from "./currDir.js";
 
 export async function renameFileName(input) {
   // rn path_to_file new_filename
@@ -18,6 +19,8 @@ export async function renameFileName(input) {
       console.log("Operation failed: file does not exists");
     }
     await fs.rename(pathFile, newFilePath);
+    console.log("Renamed");
+    currDir();
   }
 }
 

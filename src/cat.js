@@ -1,4 +1,5 @@
 import fs from "fs";
+import { currDir } from "./currDir.js";
 
 export async function catFile(input) {
   const inputPath = input.slice(4).replace(/[\n\r]/g, "");
@@ -14,6 +15,7 @@ export async function catFile(input) {
 
       rs.on("data", (chunk) => {
         console.log("-----------------------------------------\n" + chunk);
+        currDir();
       });
       rs.on("error", (error) => {
         console.error(`Operation failed: ${error.message}`);

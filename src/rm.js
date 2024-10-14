@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import { currDir } from "./currDir.js";
 
 export async function removeFile(input) {
   // rm path_to_file
@@ -13,6 +14,8 @@ export async function removeFile(input) {
 
   if (stats.isFile()) {
     await fs.rm(inputPath);
+    console.log("Removed");
+    currDir();
   } else {
     console.log("Invalid input");
   }

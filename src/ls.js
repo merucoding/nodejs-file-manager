@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import { currDir } from "./currDir.js";
 
 export async function showLs() {
   const diresArr = [];
@@ -20,4 +21,5 @@ export async function showLs() {
 
   const combo = diresArr.concat(filesArr);
   console.table(combo);
+  currDir();
 }

@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import { currDir } from "./currDir.js";
 
 export async function createFile(input) {
   // add new_file_name
@@ -8,6 +9,7 @@ export async function createFile(input) {
 
   try {
     await fs.writeFile(pathToFile, "", { encoding: "utf8" });
+    currDir();
   } catch {
     console.log("Operation failed");
   }

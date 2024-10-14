@@ -1,6 +1,7 @@
 import fs from "fs";
 import zlib from "zlib";
 import { pipeline } from "stream/promises";
+import { currDir } from "../currDir.js";
 
 export async function compress(input) {
   // compress path_to_file path_to_destination
@@ -24,6 +25,7 @@ export async function compress(input) {
         const ws = fs.createWriteStream(pathToDest);
         const brotli = zlib.createBrotliCompress();
         await pipeline(rs, brotli, ws);
+        currDir();
       } else {
         console.log("Invalid input: path is not a file");
       }
