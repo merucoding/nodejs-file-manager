@@ -11,6 +11,7 @@ import { renameFileName } from "./rename.js";
 import { copyFile } from "./cp.js";
 import { removeFile } from "./rm.js";
 import { osInfo } from "./os.js";
+import { hashCalculate } from "./hash.js";
 
 const homeDir = os.homedir();
 process.chdir(homeDir);
@@ -61,6 +62,10 @@ stdin.on("data", (data) => {
 
   if (input.startsWith("os ")) {
     osInfo(input);
+  }
+
+  if (input.startsWith("hash ")) {
+    hashCalculate(input);
   }
 
   if (input.trim() === "ls") {
